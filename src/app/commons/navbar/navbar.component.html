@@ -1,0 +1,21 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink='/' routerLinkActive="active">Aplicación de formularios</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink='/forms' routerLinkActive="active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Formularios
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/forms/form01" routerLinkActive="active" >Form01</a>
+            <a class="dropdown-item" routerLink="/forms/form02" routerLinkActive="active" >Form02</a>
+            <a class="dropdown-item disabled" routerLink="/forms/form03" routerLinkActive="active" disabled >Form03</a>
+            <a class="dropdown-item disabled" routerLink="/forms/form04" routerLinkActive="active" disabled >Form04</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
