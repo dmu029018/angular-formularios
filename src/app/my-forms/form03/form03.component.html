@@ -1,1 +1,67 @@
-<p>form03 works!</p>
+<h2>Formulario Register (3)</h2>
+<form #formulario (change)="checkButton()">
+  <div class="form-group">
+    <label for="campo-usuario">Usuario</label>
+    <input class="form-control" type="text" #username [placeholder]="placeholder.username" required />
+    <small id="usernameHelp" class="form-text text-muted">Identificador principal</small>
+  </div>
+  <div class="form-group">
+    <label for="campo-pass">Contraseña</label>
+    <input class="form-control" type="password" #userpass [placeholder]="placeholder.userpass" required />
+  </div>
+  <div class="form-group">
+    <label for="campo-nombrereal">Nombre real</label>
+    <input class="form-control" type="text" #realname [placeholder]="placeholder.realName" minlength="1" required />
+  </div>
+  <div class="form-group">
+    <label for="campo-email">Correo electrónico</label>
+    <input class="form-control" type="email" #email [placeholder]="placeholder.email" minlength="1" required />
+  </div>
+  <div class="form-group">
+    <label for="campo-continente">Continente</label>
+    <select class="form-control" type="text" #continent>
+      <option *ngFor="let continent of continents" [value]="continent.value" [selected]="continent.selected"
+        [disabled]="continent.disabled">
+        {{continent.text}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="campo-genero">
+      <input type="radio" #{{genders.h.id}}='' [value]="genders.H.value" [name]="genders.H.value"
+        [checked]="genders.H.checked"/> <!--[(ngModel)]="userData.gender"-->
+      {{genders.H.value}}
+    </label>
+    <label for="campo-genero">
+      <input type="radio" #{{genders.m.id}}='' [value]="genders.M.value" [name]="genders.M.value"
+        [checked]="genders.M.checked"/> <!--[(ngModel)]="userData.gender"-->
+      {{genders.M.value}}
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="campoMayorEdad">Mayor de 18?</label>
+    <input type="checkbox" #upTo18 /> <!--[(ngModel)]="userData.upTo18"-->
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">Register</button>
+  </div>
+</form>
+<!--
+<ng-container *ngIf="(user.getUsername() > '' && user.getPassword() > ''); else faltandatos">
+  <p>Usuario: {{ user.getUsername() }}</p>
+  <p>Contraseña: {{ user.getPassword() }}</p>
+</ng-container>
+<ng-template #faltandatos>
+  <div class="card">
+    <div class="card-header text-center text-danger">
+      <h3>Faltan los siguientes datos:</h3>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li *ngIf="user.getUsername() == ''">Nombre de usuario</li>
+        <li *ngIf="user.getPassword() == ''">Contraseña</li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+-->
