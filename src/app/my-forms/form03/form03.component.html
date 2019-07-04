@@ -1,25 +1,29 @@
 <h2>Formulario Register (3)</h2>
-<form #formulario (change)="checkButton()">
+<form #formulario (input)="checkButton()">
   <div class="form-group">
     <label for="campo-usuario">Usuario</label>
-    <input class="form-control" type="text" #username [placeholder]="placeholder.username" required />
+    <input class="form-control" type="text" #username [placeholder]="placeholder.username" [(ngModel)]="userData.username" required />
     <small id="usernameHelp" class="form-text text-muted">Identificador principal</small>
   </div>
   <div class="form-group">
     <label for="campo-pass">Contraseña</label>
-    <input class="form-control" type="password" #userpass [placeholder]="placeholder.userpass" required />
+    <input class="form-control" type="password" #password [placeholder]="placeholder.password" [(ngModel)]="userData.password" required />
+  </div>
+  <div class="form-group">
+    <label for="campo-passConfirm">Confirmar contraseña</label>
+    <input class="form-control" type="password" #confirmPassword [placeholder]="placeholder.password" [(ngModel)]="userData.confirmPassword" required />
   </div>
   <div class="form-group">
     <label for="campo-nombrereal">Nombre real</label>
-    <input class="form-control" type="text" #realname [placeholder]="placeholder.realName" minlength="1" required />
+    <input class="form-control" type="text" #realname [placeholder]="placeholder.realname" minlength="1" [(ngModel)]="userData.realname" required />
   </div>
   <div class="form-group">
     <label for="campo-email">Correo electrónico</label>
-    <input class="form-control" type="email" #email [placeholder]="placeholder.email" minlength="1" required />
+    <input class="form-control" type="email" #email [placeholder]="placeholder.email" minlength="1" [(ngModel)]="userData.email" required />
   </div>
   <div class="form-group">
     <label for="campo-continente">Continente</label>
-    <select class="form-control" type="text" #continent>
+    <select class="form-control" type="text" #continent [(ngModel)]="userData.continent" >
       <option *ngFor="let continent of continents" [value]="continent.value" [selected]="continent.selected"
         [disabled]="continent.disabled">
         {{continent.text}}
@@ -27,29 +31,36 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="campo-genero">
-      <input type="radio" #{{genders.h.id}}='' [value]="genders.H.value" [name]="genders.H.value"
-        [checked]="genders.H.checked"/> <!--[(ngModel)]="userData.gender"-->
-      {{genders.H.value}}
-    </label>
-    <label for="campo-genero">
-      <input type="radio" #{{genders.m.id}}='' [value]="genders.M.value" [name]="genders.M.value"
-        [checked]="genders.M.checked"/> <!--[(ngModel)]="userData.gender"-->
-      {{genders.M.value}}
-    </label>
+    <div class="col-sm-2">
+        <label>
+          <input type="radio" #{{genders.H.id}} [value]="genders.H.value" [name]="genders.H.name" checked [(ngModel)]="userData.gender">
+          {{genders.H.label}}
+        </label>
+      </div>
+      <div class="col-sm-2">
+        <label>
+          <input type="radio" #{{genders.M.id}} [value]="genders.M.value" [name]="genders.M.name" [(ngModel)]="userData.gender">
+          {{genders.M.label}}
+        </label>
+      </div>
   </div>
   <div class="form-group">
     <label for="campoMayorEdad">Mayor de 18?</label>
-    <input type="checkbox" #upTo18 /> <!--[(ngModel)]="userData.upTo18"-->
+    <input type="checkbox" #upTo18 [(ngModel)]="userData.upTo18" /> <!--[(ngModel)]="userData.upTo18"-->
   </div>
   <div class="btn-group">
-    <button type="button" class="btn btn-primary">Register</button>
+    <input type='button' (click)='saveUser()' class='btn btn-primary' #sendButton value='Aceptar' [disabled]="botonDesactivado">
   </div>
 </form>
-<!--
-<ng-container *ngIf="(user.getUsername() > '' && user.getPassword() > ''); else faltandatos">
+
+<ng-container *ngIf="(!botonDesactivado); else faltandatos">
+  <h2>Nuevo usuario creado con éxito</h2>
   <p>Usuario: {{ user.getUsername() }}</p>
   <p>Contraseña: {{ user.getPassword() }}</p>
+  <p>Nombre real: {{ user.getRealName() }}</p>
+  <p>Continente: {{ user.getContinent() }}</p>
+  <p>Género: {{ user.getGender() }}</p>
+  <p>Mayor de 18?: {{ user.getUpTo18() }}</p>
 </ng-container>
 <ng-template #faltandatos>
   <div class="card">
@@ -58,10 +69,14 @@
     </div>
     <div class="card-body">
       <ul>
-        <li *ngIf="user.getUsername() == ''">Nombre de usuario</li>
-        <li *ngIf="user.getPassword() == ''">Contraseña</li>
+        <li *ngIf="userData.username == ''">Nombre de usuario</li>
+        <li *ngIf="userData.password == ''">Contraseña</li>
+        <li *ngIf="userData.confirmPassword == ''">Confirmar contraseña</li>
+        <li *ngIf="userData.realname == ''">Nombre real</li>
+        <li *ngIf="userData.continent == ''">Continente</li>
+        <li *ngIf="userData.gender == ''">Género</li>
       </ul>
     </div>
   </div>
 </ng-template>
--->
+

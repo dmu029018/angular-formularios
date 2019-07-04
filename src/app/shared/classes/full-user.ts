@@ -28,47 +28,53 @@ export class FullUser extends User {
     return `${actualDay}-${actualMonth}-${actualyear}`;
   }
 
-  getRealName() {
+  public getRealName() {
     return this.realName;
   }
 
-  getSigningUpDate() {
+  public getSigningUpDate() {
     return this.signingUpDate;
   }
 
-  getEmail() {
+  public getEmail() {
     return this.email;
   }
 
-  getContinent() {
+  public getContinent() {
     return this.continent;
   }
 
-  getGender() {
+  public getGender() {
     return this.gender;
   }
 
-  setRealName(realName) {
+  public getUpTo18() {
+    return this.upTo18;
+  }
+
+  public setRealName(realName) {
     this.realName = realName;
   }
 
-  setSigningUpDate(signingUpDate) {
-    return this.signingUpDate = signingUpDate;
+  public setSigningUpDate(signingUpDate) {
+    this.signingUpDate = signingUpDate;
   }
 
-  setEmail(email) {
-    return this.email = email;
+  public setEmail(email) {
+     this.email = email;
   }
 
-  setContinent(continent) {
-    return this.continent = continent;
+  public setContinent(continent) {
+     this.continent = continent;
   }
 
-  setGender(gender) {
-    return this.gender = gender;
+  public setGender(gender) {
+    this.gender = gender;
   }
 
-
+  public setUpTo18(upTo18) {
+    this.upTo18 = upTo18;
+  }
 
 
 }
